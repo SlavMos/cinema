@@ -1,7 +1,7 @@
 import { Container } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import NavBar from "./components/ui/NavBar";
-import Footer from "./components/ui/Footer";
+import NavBar from "./ui/NavBar";
+import Footer from "./ui/Footer";
 
 export default function Layout() {
   return (
