@@ -16,9 +16,13 @@ import {
   Slide,
   Typography,
   useScrollTrigger,
+  Link,
+  Divider,
 } from "@mui/material";
-import { Link } from "react-router-dom";
-
+import { Link as RouterLink } from "react-router-dom";
+import { TOP_LISTS } from "../../../constants";
+import { MOVIES_LISTS } from "../../../constants";
+import { iconComponents } from "../../../constants";
 export default function NavBar() {
   const [isOpen, setOpen] = useState(false);
 
@@ -28,6 +32,7 @@ export default function NavBar() {
   const trigger = useScrollTrigger({
     target: typeof window !== "undefined" ? window : undefined,
   });
+
   return (
     <Slide appear={false} direction="down" in={!trigger}>
       <AppBar>
@@ -49,20 +54,52 @@ export default function NavBar() {
             >
               <Box sx={{ width: 200 }} onClick={handleDrawerToggle}>
                 <List>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <MovieIcon />
-                      </ListItemIcon>
-                      <ListItemText primary="Фильмы" />
-                    </ListItemButton>
-                  </ListItem>
+                  {TOP_LISTS.map((item) => {
+                    const Icon = iconComponents[item.icon]; // ← получаем компонент по строке
+
+                    return (
+                      <ListItem
+                        disablePadding
+                        component={RouterLink}
+                        to={item.url}
+                        key={item.title}
+                      >
+                        <ListItemButton>
+                          <ListItemIcon>
+                            <Icon />
+                          </ListItemIcon>
+                          <ListItemText primary={item.title} />
+                        </ListItemButton>
+                      </ListItem>
+                    );
+                  })}
+                </List>
+                <Divider />
+                <List>
+                  {MOVIES_LISTS.map((item) => {
+                    const Icon = iconComponents[item.icon]; // ← получаем компонент по строке
+                    return (
+                      <ListItem
+                        disablePadding
+                        component={RouterLink}
+                        to={item.url}
+                        key={item.title}
+                      >
+                        <ListItemButton>
+                          <ListItemIcon>
+                            <Icon />
+                          </ListItemIcon>
+                          <ListItemText primary={item.title} />
+                        </ListItemButton>
+                      </ListItem>
+                    );
+                  })}
                 </List>
               </Box>
             </Drawer>
             <Typography
               sx={{ color: "white", textDecoration: "none" }}
-              component={Link}
+              component={RouterLink}
               to="/"
             >
               MosFlix
