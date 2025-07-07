@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function MoviesListMain() {
-  return <div>MoviesListTop</div>;
+  return <div>MoviesListMain</div>;
 }
