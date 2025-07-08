@@ -28,7 +28,7 @@ export const iconComponents = {
 
 export const TOP_LISTS = [
   {
-    title: "Топ 100 фильмоф",
+    title: "Топ 100 фильмов",
     icon: "AutoAwesome",
     url: "/popular",
   },

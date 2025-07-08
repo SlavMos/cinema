@@ -102,7 +102,7 @@ export default function NavBar() {
               component={RouterLink}
               to="/"
             >
-              MosFlix
+              GalaxyCinema
             </Typography>
           </Toolbar>
         </Container>
