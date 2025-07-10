@@ -1,8 +1,8 @@
-import { Stack } from "@mui/material";
+import { Pagination, Stack } from "@mui/material";
 import React from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-export default function MoviesList({ movies }) {
+export default function MoviesList({ movies, totalPages, page, setPage }) {
   console.log(movies);
   return (
     <>
@@ -11,6 +11,14 @@ export default function MoviesList({ movies }) {
           <MoviesCard key={movie.kinopoiskId} movie={movie} />
         ))}
       </Stack>
+      <Pagination
+        variant="outlined"
+        shape="rounded"
+        count={totalPages}
+        page={page}
+        color="primary"
+        onChange={(_, value) => setPage(value)}
+      />
     </>
   );
 }

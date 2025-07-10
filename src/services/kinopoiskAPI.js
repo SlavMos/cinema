@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const kinopoiskApiKey = import.meta.env.VITE_KINOPOISK_KEY;
+
 export const kinopoiskAPI = createApi({
   reducerPath: "kinopoiskAPI",
   baseQuery: fetchBaseQuery({

@@ -13,10 +13,13 @@ export default function MoviesCard({ movie }) {
           alt={movie.nameRu}
         />
       </RouterLink>
-      <Link component={RouterLink} to={`/movie/${movie.kinopoiskId}`}>
-        <Typography textAlign="center">
-          {movie.nameRu ? movie.nameRu : movie.nameEn}
-        </Typography>
+      <Link
+        textAlign="center"
+        component={RouterLink}
+        to={`/movie/${movie.kinopoiskId}`}
+        sx={{ width: "200px" }}
+      >
+        {movie.nameRu ? movie.nameRu : movie.nameEn}
       </Link>
 
       {movie.ratingKinopoisk && (
