@@ -11,14 +11,16 @@ export default function MoviesList({ movies, totalPages, page, setPage }) {
           <MoviesCard key={movie.kinopoiskId} movie={movie} />
         ))}
       </Stack>
-      <Pagination
-        variant="outlined"
-        shape="rounded"
-        count={totalPages}
-        page={page}
-        color="primary"
-        onChange={(_, value) => setPage(value)}
-      />
+      <Stack sx={{ mt: 3 }} alignItems="center">
+        <Pagination
+          variant="outlined"
+          shape="rounded"
+          count={totalPages}
+          page={page}
+          color="primary"
+          onChange={(_, value) => setPage(value)}
+        />
+      </Stack>
     </>
   );
 }

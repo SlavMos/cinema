@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   countries: "",
-  gengreId: "",
+  genreId: "",
   order: "",
   type: "",
   year: "",

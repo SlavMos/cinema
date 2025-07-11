@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useGetFilmsTopQuery } from "../../../services/kinopoiskAPI";
 import { TOP_LISTS } from "../../../constants";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
@@ -15,6 +15,9 @@ export default function MoviesListTop() {
     type: movieType.value,
     page,
   });
+  useEffect(() => {
+    setPage(1);
+  }, [location]); //если мы перейдем на другую страницу пагинация буде на 1 странице
   if (error) return <p>Some error</p>;
   if (isLoading) return <p>Loading...</p>;
   console.log(data);
