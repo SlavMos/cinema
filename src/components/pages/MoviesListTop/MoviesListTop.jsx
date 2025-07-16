@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useGetFilmsTopQuery } from "../../../services/kinopoiskAPI";
 import { TOP_LISTS } from "../../../constants";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Button, Stack, Typography } from "@mui/material";
 import MoviesList from "../../ui/MoviesList/MoviesList";
 import { ArrowBack } from "@mui/icons-material";
+import MoviesListSkeleton from "../../ui/MoviesListSkeleton/MoviesListSkeleton";
 export default function MoviesListTop() {
   const location = useLocation();
   const [page, setPage] = useState(1);
@@ -19,7 +20,7 @@ export default function MoviesListTop() {
     setPage(1);
   }, [location]); //если мы перейдем на другую страницу пагинация буде на 1 странице
   if (error) return <p>Some error</p>;
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <MoviesListSkeleton />;
   console.log(data);
 
   return (

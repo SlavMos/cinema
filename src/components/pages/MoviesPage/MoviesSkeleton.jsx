@@ -5,11 +5,16 @@ export default function MoviesSkeleton() {
   const isMobile = useMediaQuery("(max-width:600px)");
 
   return (
-    <Stack spacing={4} mt={2} mb={2}>
+    <Stack spacing={4} mt={isMobile ? 1 : 4} mb={isMobile ? 3 : 4}>
       {new Array(3).fill(null).map((_, index) => (
         <Box key={index}>
           {/* Заголовок */}
-          <Skeleton variant="text" height={40} width={200} sx={{ mb: 2 }} />
+          <Skeleton
+            variant="text"
+            height={60}
+            width={250}
+            sx={{ mb: 2, ml: 5 }}
+          />
 
           {/* "Карточки" фильмов */}
           <Stack
@@ -18,14 +23,17 @@ export default function MoviesSkeleton() {
             flexWrap="wrap"
             justifyContent="center"
           >
-            {new Array(isMobile ? 2 : 5).fill(null).map((_, i) => (
+            {new Array(4).fill(null).map((_, i) => (
               <Skeleton
                 key={i}
                 variant="rectangular"
                 animation="wave"
-                height={isMobile ? 300 : 350}
+                height={isMobile ? 200 : 350}
                 width={isMobile ? "100%" : 230}
-                sx={{ borderRadius: 2 }}
+                sx={{
+                  borderRadius: 2,
+                  minWidth: isMobile ? "140px" : undefined,
+                }}
               />
             ))}
           </Stack>
