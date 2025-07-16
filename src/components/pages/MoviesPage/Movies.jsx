@@ -3,6 +3,8 @@ import useMoviesQuery from "../../../hooks/useMoviesQuery";
 import AcroolCarousel, { AcroolSlideImage } from "@acrool/react-carousel";
 import { Link, Stack, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
+import ErrorMessage from "../../ui/ErrorMessage/ErrorMessage";
+import MoviesSkeleton from "./MoviesSkeleton";
 
 export default function Movies() {
   const {
@@ -15,15 +17,14 @@ export default function Movies() {
     // responseCartons,
   } = useMoviesQuery();
 
-  if (isLoading) return <p>Loading...</p>;
-  if (hasError) return <p>ERROR</p>;
+  if (isLoading) return <MoviesSkeleton />;
+  if (hasError) return <ErrorMessage />;
 
   const serializeDataForCarousel = (data) =>
     data.map((row) => (
-      <AcroolSlideImage
-        key={row.id}
-        imageUrl={row.posterUrlPreview}
-      ></AcroolSlideImage>
+      <RouterLink key={row.id} to={`/movie/${row.kinopoiskId}`}>
+        <AcroolSlideImage imageUrl={row.posterUrlPreview}></AcroolSlideImage>
+      </RouterLink>
     ));
 
   const carouselArr = [
