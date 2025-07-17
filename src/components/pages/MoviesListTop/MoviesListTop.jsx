@@ -19,6 +19,7 @@ export default function MoviesListTop() {
   useEffect(() => {
     setPage(1);
   }, [location]); //если мы перейдем на другую страницу пагинация буде на 1 странице
+
   if (error) return <p>Some error</p>;
   if (isLoading) return <MoviesListSkeleton />;
   console.log(data);

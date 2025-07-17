@@ -12,9 +12,9 @@ export default function Movies() {
     hasError,
     responsePopular,
     responseBest,
-    // responseFilms,
+    responseFilms,
     responseSerials,
-    // responseCartons,
+    responseCartons,
   } = useMoviesQuery();
 
   if (isLoading) return <MoviesSkeleton />;
@@ -38,21 +38,21 @@ export default function Movies() {
       url: "/best",
       data: serializeDataForCarousel(responseBest.data.items),
     },
-    // {
-    //   title: "Фильмы",
-    //   url: "/films",
-    //   data: serializeDataForCarousel(responseFilms.data.items),
-    // },
+    {
+      title: "Фильмы",
+      url: "/films",
+      data: serializeDataForCarousel(responseFilms.data.items),
+    },
     {
       title: "ТВ Шоу",
       url: "/serials",
       data: serializeDataForCarousel(responseSerials.data.items),
     },
-    // {
-    //   title: "Мультфильмы",
-    //   url: "/cartoons",
-    //   data: serializeDataForCarousel(responseCartons.data.items),
-    // },
+    {
+      title: "Мультфильмы",
+      url: "/cartoons",
+      data: serializeDataForCarousel(responseCartons.data.items),
+    },
   ];
 
   return (

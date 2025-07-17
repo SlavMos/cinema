@@ -13,6 +13,7 @@ export default function MoviesCard({ movie }) {
           alt={movie.nameRu}
         />
       </RouterLink>
+
       <Link
         textAlign="center"
         component={RouterLink}

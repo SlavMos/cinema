@@ -11,6 +11,7 @@ export default function MoviesList({ movies, totalPages, page, setPage }) {
           <MoviesCard key={movie.kinopoiskId} movie={movie} />
         ))}
       </Stack>
+
       <Stack sx={{ mt: 3 }} alignItems="center">
         <Pagination
           variant="outlined"

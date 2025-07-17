@@ -88,15 +88,18 @@ export const MOVIES_LISTS = [
     title: "Фильмы",
     icon: "LocalMovies",
     url: "/films",
+    value: "FILM",
   },
   {
-    title: "Сериалы",
+    title: "ТВ Шоу",
     icon: "LocalMovies",
     url: "/serials",
+    value: "TV_SHOW",
   },
   {
     title: "Мультфильмы",
     icon: "LocalMovies",
     url: "/cartoons",
+    value: "FILM",
   },
 ];

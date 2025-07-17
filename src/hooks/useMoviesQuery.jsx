@@ -31,7 +31,7 @@ export default function useMoviesQuery() {
   });
 
   const responseSerials = useGetFilmsQuery({
-    type: "ALL",
+    type: "TV_SHOW",
     countries,
     genreId: "1",
     order,
@@ -39,7 +39,7 @@ export default function useMoviesQuery() {
     page,
   });
   const responseCartons = useGetFilmsQuery({
-    type: "MINI_SERIES",
+    type: "FILM",
     countries,
     genreId: "18",
     order,

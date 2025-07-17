@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Button, Stack, Typography } from "@mui/material";
 import MoviesList from "../../ui/MoviesList/MoviesList";
 import { ArrowBack } from "@mui/icons-material";
-import MoviesListSkeleton from "../../ui/MoviesListSkeleton/MoviesListSkeleton";
+import MoviesSkeleton from "../MoviesPage/MoviesSkeleton";
 import { MOVIES_LISTS } from "../../../constants";
 import { useGetFilmsQuery } from "../../../services/kinopoiskAPI";
 import { useSelector } from "react-redux";
@@ -25,17 +25,19 @@ export default function MoviesListMain() {
     (state) => state.currentQuery
   );
 
+  const myGenreId = movieType.url === "cartoons" ? 18 : genreId;
+
   const { data, error, isLoading } = useGetFilmsQuery({
     type: movieType.value,
     page,
     countries,
     order,
     year,
-    genreId,
+    genreId: myGenreId,
   });
 
   if (error) return <p>Some error</p>;
-  if (isLoading) return <MoviesListSkeleton />;
+  if (isLoading) return <MoviesSkeleton />;
 
   return (
     <>

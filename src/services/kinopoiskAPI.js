@@ -18,8 +18,15 @@ export const kinopoiskAPI = createApi({
         `/api/v2.2/films/collections?type=${type}&page=${page}`,
     }),
     getFilms: builder.query({
-      query: ({ countries, genderId, order = "NUM_VOTE", type, year, page }) =>
-        `/api/v2.2/films?countries${countries}&genderId${genderId}&order${order}&type${type}&year${year}&${page}`,
+      query: ({
+        countries,
+        genreId,
+        order = "NUM_VOTE",
+        type = "FILM",
+        year,
+        page,
+      }) =>
+        `/api/v2.2/films?countries=${countries}&genres=${genreId}&order=${order}&type=${type}&year=${year}&page=${page}`,
     }),
   }),
 });
