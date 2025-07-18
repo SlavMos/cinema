@@ -8,6 +8,7 @@ import MoviesSkeleton from "../MoviesPage/MoviesSkeleton";
 import { MOVIES_LISTS } from "../../../constants";
 import { useGetFilmsQuery } from "../../../services/kinopoiskAPI";
 import { useSelector } from "react-redux";
+import SelectMovies from "../../ui/SelectMovies/SelectMovies";
 
 export default function MoviesListMain() {
   const location = useLocation();
@@ -45,6 +46,7 @@ export default function MoviesListMain() {
         <Button startIcon={<ArrowBack />} onClick={() => navigate(-1)} />
         <Typography variant="h4">{movieType.title}</Typography>
       </Stack>
+      <SelectMovies />
       <MoviesList
         movies={data.items}
         totalPages={data.totalPages}
