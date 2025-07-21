@@ -13,7 +13,7 @@ import { useGetGenreAndCountriesQuery } from "../../../services/kinopoiskAPI";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import MoviesSkeleton from "../../pages/MoviesPage/MoviesSkeleton";
 import { useDispatch } from "react-redux";
-import { selectQuery } from "../../../features/currentQuerySlice";
+import { resetQuery, selectQuery } from "../../../features/currentQuerySlice";
 
 export default function SelectMovies({ countries, order, year, genreId }) {
   const { data, error, isLoading } = useGetGenreAndCountriesQuery();
@@ -31,6 +31,7 @@ export default function SelectMovies({ countries, order, year, genreId }) {
     value: new Date().getFullYear() - index,
   }));
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const dispatch = useDispatch();
 
   return (
@@ -91,7 +92,9 @@ export default function SelectMovies({ countries, order, year, genreId }) {
           </Select>
         </FormControl>
         <Box>
-          <Button variant="outlined">Сбросить</Button>
+          <Button onClick={() => dispatch(resetQuery())} variant="outlined">
+            Сбросить
+          </Button>
         </Box>
       </Stack>
     </>
