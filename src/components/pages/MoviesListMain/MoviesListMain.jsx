@@ -46,7 +46,12 @@ export default function MoviesListMain() {
         <Button startIcon={<ArrowBack />} onClick={() => navigate(-1)} />
         <Typography variant="h4">{movieType.title}</Typography>
       </Stack>
-      <SelectMovies />
+      <SelectMovies
+        countries={countries}
+        order={order}
+        year={year}
+        genreId={genreId}
+      />
       <MoviesList
         movies={data.items}
         totalPages={data.totalPages}

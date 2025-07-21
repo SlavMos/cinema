@@ -8,33 +8,53 @@ import {
   Stack,
 } from "@mui/material";
 import React from "react";
+import { useGetGenreAndCountriesQuery } from "../../../services/kinopoiskAPI";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import MoviesSkeleton from "../../pages/MoviesPage/MoviesSkeleton";
 
-export default function SelectMovies() {
+export default function SelectMovies({ countries, order, year, genreId }) {
+  const { data, error, isLoading } = useGetGenreAndCountriesQuery();
+  console.log(data);
+  if (error) return <ErrorMessage />;
+  if (isLoading) return <MoviesSkeleton />;
+
+  const orderList = [
+    { title: "По рейтингу ", value: "RATING" },
+    { title: "По оценкам", value: "NUM_VOTE" },
+  ];
+
+  const yearList = new Array(60).fill(null).map((_, index) => ({
+    title: new Date().getFullYear() - index,
+    value: new Date().getFullYear() - index,
+  }));
+
   return (
     <>
-      <Stack sx={{ flexDirection: { sm: "column", md: "row" } }}>
+      <Stack sx={{ flexDirection: { sm: "column", md: "row" }, mb: 2 }}>
         <FormControl fullWidth size="small">
           <InputLabel id="demo-simple-select-label">Сортировка</InputLabel>
-          <Select label="Age">
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+          <Select label="Orders">
+            {orderList.map((order) => (
+              <MenuItem key={order.value} value={order.value}>
+                {order.title}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
         <FormControl fullWidth size="small">
           <InputLabel id="demo-simple-select-label">Страна</InputLabel>
-          <Select label="Age">
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+          <Select label="Countries">
+            {data?.countries.map((country) => (
+              <MenuItem key={country.id}>{country.country}</MenuItem>
+            ))}
           </Select>
         </FormControl>
         <FormControl fullWidth size="small">
           <InputLabel id="demo-simple-select-label">Жанр</InputLabel>
-          <Select label="Age">
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+          <Select label="Genres">
+            {data?.genres.map((genres) => (
+              <MenuItem key={genres.id}>{genres.genre}</MenuItem>
+            ))}
           </Select>
         </FormControl>
         <FormControl fullWidth size="small">
@@ -46,9 +66,11 @@ export default function SelectMovies() {
             label="Age"
             // onChange={handleChange}
           >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            {yearList.map((year) => (
+              <MenuItem key={year.value} value={year.value}>
+                {year.title}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
         <Box>
