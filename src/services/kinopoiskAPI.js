@@ -35,7 +35,7 @@ export const kinopoiskAPI = createApi({
         year,
         page,
       }) =>
-        `/api/v2.2/films?countries=${countries}&genres=${genreId}&order=${order}&type=${type}&year=${year}&page=${page}`,
+        `/api/v2.2/films?countries=${countries}&genres=${genreId}&order=${order}&type=${type}&yearFrom=${year}&yearTo=${year}&page=${page}`,
     }),
 
     getGenreAndCountries: builder.query({
