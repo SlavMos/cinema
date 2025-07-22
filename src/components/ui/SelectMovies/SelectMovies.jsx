@@ -16,10 +16,8 @@ import { useDispatch } from "react-redux";
 import { resetQuery, selectQuery } from "../../../features/currentQuerySlice";
 
 export default function SelectMovies({ countries, order, year, genreId }) {
-  const { data, error, isLoading } = useGetGenreAndCountriesQuery();
+  const { data } = useGetGenreAndCountriesQuery();
   console.log(data);
-  if (error) return <ErrorMessage />;
-  if (isLoading) return <MoviesSkeleton />;
 
   const orderList = [
     { title: "По рейтингу ", value: "RATING" },
@@ -31,7 +29,6 @@ export default function SelectMovies({ countries, order, year, genreId }) {
     value: new Date().getFullYear() - index,
   }));
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const dispatch = useDispatch();
 
   return (
