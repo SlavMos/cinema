@@ -17,6 +17,7 @@ import {
 import ErrorMessage from "../../ui/ErrorMessage/ErrorMessage";
 import { ArrowBack, Language, NavigateBeforeSharp } from "@mui/icons-material";
 import MoviesCard from "../../ui/MoviesCard/MoviesCard";
+import VideoPlayer from "../../ui/VideoPlayer/VideoPlayer";
 
 export default function MovieDetail() {
   const { id } = useParams();
@@ -165,18 +166,8 @@ export default function MovieDetail() {
           Смотреть онлайн
         </Typography>
 
-        <Box
-          component="video"
-          controls
-          sx={{
-            width: { xs: "100%", sm: "80%", md: "60%" },
-            borderRadius: 2,
-            boxShadow: 3,
-          }}
-        >
-          {/* src можно указать, если у тебя есть трейлер */}
-          <source src="https://..." type="video/mp4" />
-          Your browser does not support the video tag.
+        <Box>
+          <VideoPlayer kpId={responseFilm.data.filmId || id} />
         </Box>
       </Box>
 
