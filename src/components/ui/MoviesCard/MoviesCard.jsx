@@ -1,9 +1,13 @@
 import { Rating, Stack, Tooltip, Typography, Box, Link } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import s from "./MoviesCard.module.css";
 import { LibraryAdd } from "@mui/icons-material";
 export default function MoviesCard({ movie }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Stack>
       <RouterLink to={`/movie/${movie.kinopoiskId}`}>
