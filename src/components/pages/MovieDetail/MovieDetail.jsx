@@ -167,7 +167,7 @@ export default function MovieDetail() {
         </Typography>
 
         <Box>
-          <VideoPlayer kpId={responseFilm.data.filmId || id} />
+          <VideoPlayer kpId={responseFilm.data.kinopoiskId || id} />
         </Box>
       </Box>
 

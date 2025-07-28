@@ -18,11 +18,13 @@ import {
   useScrollTrigger,
   Link,
   Divider,
+  Stack,
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { TOP_LISTS } from "../../../constants";
 import { MOVIES_LISTS } from "../../../constants";
 import { iconComponents } from "../../../constants";
+import Search from "../Search/Search";
 export default function NavBar() {
   const [isOpen, setOpen] = useState(false);
 
@@ -97,13 +99,21 @@ export default function NavBar() {
                 </List>
               </Box>
             </Drawer>
-            <Typography
-              sx={{ color: "white", textDecoration: "none" }}
-              component={RouterLink}
-              to="/"
+            <Stack
+              flexDirection="row"
+              justifyContent="space-between"
+              alignItems="center"
+              width="100%"
             >
-              GalaxyCinema
-            </Typography>
+              <Typography
+                sx={{ color: "white", textDecoration: "none" }}
+                component={RouterLink}
+                to="/"
+              >
+                GalaxyCinema
+              </Typography>
+              <Search />
+            </Stack>
           </Toolbar>
         </Container>
       </AppBar>

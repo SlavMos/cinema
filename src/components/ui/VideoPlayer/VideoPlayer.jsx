@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import classNames from "classnames";
-import styles from "./VideoPlayer.module.css";
+import s from "./VideoPlayer.module.css";
 
 export default function VideoPlayer({ kpId }) {
   const [scriptHtml, setScriptHtml] = useState("");
@@ -21,7 +21,7 @@ export default function VideoPlayer({ kpId }) {
 
   return (
     <div
-      className={classNames("uitools", styles.video)}
+      className={classNames("uitools", s.video)}
       id="videoplayers"
       dangerouslySetInnerHTML={{ __html: scriptHtml }}
     />
