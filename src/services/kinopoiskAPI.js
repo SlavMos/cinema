@@ -61,10 +61,15 @@ export const kinopoiskAPI = createApi({
     getStaff: builder.query({
       query: (id) => `/api/v1/staff?filmId=${id}`,
     }),
+    getFilmsByKeyword: builder.query({
+      query: ({ keyword, page = 1 }) =>
+        `/api/v2.1/films/search-by-keyword?keyword=${keyword}&page=${page}`,
+    }),
   }),
 });
 
 export const {
+  useGetFilmsByKeywordQuery,
   useGetFilmQuery,
   useGetSequelAndPrequelsQuery,
   useGetStaffQuery,
