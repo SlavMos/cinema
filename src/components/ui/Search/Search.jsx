@@ -22,7 +22,6 @@ export default function Search() {
 
   const { data, isFetching } = useGetFilmsByKeywordQuery({ keyword, page });
 
-  console.log("data", data);
   return (
     <Autocomplete
       freeSolo
